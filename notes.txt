@@ -1,0 +1,9 @@
+This error occurs in React when you render a list of elements using a loop (like .map()), but fail to provide a unique key prop to the outermost element being returned.
+React needs these keys to track which items in a list have changed, been added, or been removed, ensuring efficient UI updates.
+
+
+Important Rules for Keys
+Must be Unique: The key must be completely unique compared to its sibling items in that specific list.
+Do Not Use Array Index (if possible): Avoid using the map loop's index (item, index) => key={index} if your list items can change order, get filtered, or get sorted, as this can cause rendering bugs.
+Must be on the Top Element: If your map returns a wrapped container, the key must go on that parent container tag, not on the children inside it.
+If you are stuck, paste your .map() loop block code here, and I will show you exactly where to place the key prop!

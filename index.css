@@ -1,16 +1,45 @@
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 200;
+    letter-spacing: 0;
+}
+
+h3 {
+    display: flex;
+    margin: 10px;
+}
+
+h4 {
+    margin: 3px;
+    color: #686b78; /* Clean, modern gray tone */
+    font-weight: 300; /* Makes the font texture look lighter */
+    font-size: 14px;
+}
+
+img {
+    border-radius: 15px;
+}
+
 .header {
     display: flex;
-    justify-content: space-between;
-    border: 1px solid black;
-    background-color: #e9e8ff;
+    justify-content: center;
+    background-color: #ffffff;
+    /* Sharp sides, soft blur only at the bottom */
+    box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.4);
     padding: 10px;
     margin: 10px;
 }
 
 .logo {
-    width: 250px;
-    height: auto;
-    padding: 10px;
+    width: 72px;
+    height: 72px;
+    padding: 4px;
+}
+
+.logo:hover {
+    transform: translateY(-10px); /* Moves up 5 pixels */
+    transition: transform 0.2s ease;
+    box-shadow: 0 12px 12px -6px rgb(255, 224, 20);
 }
 
 .nav-items {
@@ -28,26 +57,88 @@
     margin: 10px;
 }
 
-.restraurant-card {
-    border: 1px solid black;
-    background-color: #def6ff;
-    width: 200px;
-    padding: 10px;
-    height: 350px;
-    margin: 10px;
+.restraurant-container {
+    display: flex;
+    flex-wrap: wrap;
 }
 
-.search-bar {
-    border: 1px solid black;
-    background-color: #fff9ed;
-    height: 20px;
+.restraurant-card {
+    background-color: #ffffff;
+    width: 275px;
+    padding: 8px;
     margin: 10px;
-    padding: 10px;
+    border-radius: 15px;
+}
+
+.restraurant-card:hover {
+    background-color: #dbdbdb;
+    /* Increased alpha opacity from 0.2 to 0.4 and slightly expanded the blur spread */
+    box-shadow: 4px 4px 4px rgb(255, 227, 42);
+    transform: translateY(-5px);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+/* Image Container wrapper to handle absolute positioning */
+.image-container {
+    position: relative;
+    width: 100%;
+    height: 150px;
 }
 
 .restraurant-image {
-    width: 200px;
-    height: 200px;
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    background-color: #ffffff;
+}
+
+/* Shaded overlay container at the bottom of the image for offer text only */
+.image-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 25px 10px 10px 10px; /* Extra top padding for gradient smooth transition */
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.8) 0%,
+        rgba(0, 0, 0, 0) 100%
+    );
+    box-sizing: border-box;
+    border-bottom-left-radius: 15px; /* Matches image border radius */
+    border-bottom-right-radius: 15px;
+}
+
+/* Offer layout inside overlay */
+.offer {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+/* Container layout moved back below the image */
+.rating-container {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px; /* Space between star and text */
+    margin: 4px 0; /* Optional: spacing above and below the row */
+    padding: 6px;
+}
+
+/* Star image size and alignment fix */
+.rating-star {
+    width: 18px; /* Matches typical font heights */
+    height: 18px;
+    display: block; /* Removes hidden bottom margin of inline images */
+}
+
+/* Clean dark gray tone for standard background visibility */
+.rating-text {
+    font-size: 15px;
+    font-weight: 500px;
+    color: #000000;
 }
 
 .restraurant-name {
@@ -56,6 +147,10 @@
     margin-top: 10px;
 }
 
-h4 {
-    margin: 3px;
+/* Fixed syntax errors: removed string quotes */
+.rating-delivery {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin: 8px 0;
 }

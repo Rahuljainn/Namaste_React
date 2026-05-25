@@ -1,25 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import resData from './resData.js';
 
-const appLogo = new URL('./public/appLogo.jpg', import.meta.url).href;
-const res1 = new URL('./public/burger.jpg', import.meta.url).href;
-
-/*
-header
-    logo
-    Nav items
-body
-    searchBar
-    RestraurantContainer
-        restraurantCard
-            img
-            name of rest, rating, cusine, delivery time
-footer
-    vopyright
-    links
-    address
-    contact
-*/
+const appLogo =
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5XJkLEIi2MGgOpToU2nZWzSgkTYj6io-LJdTwcFF-pw&s';
+const ratingStar = new URL('./public/rating.png', import.meta.url).href;
 
 const Header = () => {
     return (
@@ -29,9 +14,11 @@ const Header = () => {
             </div>
             <div className='nav-items'>
                 <ul>
-                    <li>Home</li>
-                    <li>About</li>
-                    <li>Contact</li>
+                    <li>Other</li>
+                    <li>Search</li>
+                    <li>Offers</li>
+                    <li>Help</li>
+                    <li>Sign In</li>
                     <li>Cart</li>
                 </ul>
             </div>
@@ -39,14 +26,57 @@ const Header = () => {
     );
 };
 
-const RestraurantCard = () => {
+const RestaurantCard = ({resData}) => {
+    const {
+        cloudinaryImageId,
+        name,
+        cuisines,
+        avgRatingString,
+        sla,
+        aggregatedDiscountInfoV3,
+        areaName,
+    } = resData.info;
+
     return (
-        <div className='restraurant-card'>
-            <img className='restraurant-image' src={res1} alt='restraurant' />
-            <h3 className='restraurant-name'> Burger King 🍔</h3>
-            <h4 className='restraurant-cuisine'> American, Fast Food </h4>
-            <h4 className='restraurant-rating'> 4.5 ⭐ </h4>
-            <h4 className='restraurant-delivery-time'> 30 mins </h4>
+        <div className='card'>
+            <div className='restraurant-card'>
+                <div className='image-container'>
+                    <img
+                        className='restraurant-image'
+                        src={
+                            'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/' +
+                            cloudinaryImageId
+                        }
+                        alt={name}
+                    />
+                    {/* Conditionally display the overlay shade only if an offer exists */}
+                    {(aggregatedDiscountInfoV3?.header ||
+                        aggregatedDiscountInfoV3?.subHeader) && (
+                        <div className='image-overlay'>
+                            <div className='offer'>
+                                {aggregatedDiscountInfoV3?.header}{' '}
+                                {aggregatedDiscountInfoV3?.subHeader}
+                            </div>
+                        </div>
+                    )}
+                </div>
+
+                <h3>{name}</h3>
+
+                {/* Moved rating and delivery text back outside the image container */}
+                <div className='rating-container'>
+                    <img
+                        className='rating-star'
+                        alt='rating-star'
+                        src={ratingStar}
+                    />
+                    <span className='rating-text'>
+                        {avgRatingString} • {sla?.deliveryTime} mins
+                    </span>
+                </div>
+                <h4>{cuisines?.join(', ')}</h4>
+                <h4>{areaName}</h4>
+            </div>
         </div>
     );
 };
@@ -54,10 +84,10 @@ const RestraurantCard = () => {
 const Body = () => {
     return (
         <div className='body'>
-            <div className='search-bar'>search</div>
             <div className='restraurant-container'>
-                {/* restraurant card */}
-                <RestraurantCard />
+                {resData.map((item) => (
+                    <RestaurantCard key={item.info.id} resData={item} />
+                ))}
             </div>
         </div>
     );
