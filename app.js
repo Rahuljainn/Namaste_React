@@ -13,5 +13,16 @@ const heading = React.createElement(
         ),
     ),
 );
+const elem = <span id='heading'>Element toh hai</span>;
+
+const title = <h1 id='heading'> {elem} Namaste Bhai Title</h1>;
+
+const Heading2 = () => (
+    <div id='heading'>
+        {title}
+        <h1 id='heading'>Namaste Bhai React using Functional Component</h1>
+    </div>
+);
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(heading);
+root.render(<Heading2 />);
