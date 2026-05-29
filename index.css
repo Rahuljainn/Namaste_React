@@ -30,16 +30,40 @@ img {
     margin: 10px;
 }
 
+.footer {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    justify-content: center;
+    font-size: 12px;
+    display: flex;
+    align-items: center; /* Vertically aligns items in the center */
+}
+
+/* Optional: Keep your existing hover effect smooth */
+.logo {
+    transition: transform 0.3s ease;
+}
+
 .logo {
     width: 72px;
     height: 72px;
     padding: 4px;
+    transition:
+        transform 0.3s ease,
+        opacity 0.3s ease;
+}
+
+.logoFooter {
+    width: 32px;
+    height: 32px;
+    padding: 20px;
+    margin: 0 10px; /* Adds horizontal spacing around the footer logo */
+    border-radius: 8px;
 }
 
 .logo:hover {
-    transform: translateY(-10px); /* Moves up 5 pixels */
-    transition: transform 0.2s ease;
     box-shadow: 0 12px 12px -6px rgb(255, 224, 20);
+    transform: scale(1.2); /* Slightly enlarges the logo */
+    opacity: 0.9; /* Slightly dims the logo */
 }
 
 .nav-items {
@@ -55,6 +79,14 @@ img {
     list-style-type: none;
     padding: 10px;
     margin: 10px;
+}
+
+.discovery-text {
+    font-size: 20px;
+    font-weight: 600;
+    text-align: left;
+    margin: 20px 0;
+    padding-left: 15px;
 }
 
 .restraurant-container {
@@ -74,7 +106,7 @@ img {
     background-color: #dbdbdb;
     /* Increased alpha opacity from 0.2 to 0.4 and slightly expanded the blur spread */
     box-shadow: 4px 4px 4px rgb(255, 227, 42);
-    transform: translateY(-5px);
+    transform: translateY(-20px);
     transition: all 0.3s ease;
     cursor: pointer;
 }
