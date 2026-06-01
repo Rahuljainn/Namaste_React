@@ -1,6 +1,6 @@
 import {CDN_URL, RATING_STAR} from '../utils/constants';
 
-const RestaurantCard = ({resData}) => {
+const RestaurantCard = ({resd}) => {
     const {
         cloudinaryImageId,
         name,
@@ -9,7 +9,7 @@ const RestaurantCard = ({resData}) => {
         sla,
         aggregatedDiscountInfoV3,
         areaName,
-    } = resData.info;
+    } = resd.info;
 
     return (
         <div>

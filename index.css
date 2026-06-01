@@ -1,7 +1,11 @@
+/* ==========================================
+   GLOBAL STYLES & LAYOUT
+   ========================================== */
 body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-weight: 200;
     letter-spacing: 0;
+    margin: 0; /* Prevents unwanted browser default margins */
 }
 
 h3 {
@@ -20,44 +24,36 @@ img {
     border-radius: 15px;
 }
 
+/* ==========================================
+   HEADER & NAVIGATION (Logo-shift fix applied)
+   ========================================== */
 .header {
     display: flex;
-    justify-content: center;
+    justify-content: space-between; /* Anchors logo to left, menu items to right */
+    align-items: center; /* Perfectly centers logo and text vertically */
     background-color: #ffffff;
     /* Sharp sides, soft blur only at the bottom */
     box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.4);
-    padding: 10px;
+    padding: 10px 40px; /* Extra horizontal padding for a premium look */
+    padding-left: 100px; /* Aligns with body content */
+    padding-right: 150px; /* Aligns with body content */
     margin: 10px;
 }
 
-.footer {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    justify-content: center;
-    font-size: 12px;
+.logo-container {
     display: flex;
-    align-items: center; /* Vertically aligns items in the center */
-}
-
-/* Optional: Keep your existing hover effect smooth */
-.logo {
-    transition: transform 0.3s ease;
+    align-items: center;
 }
 
 .logo {
     width: 72px;
     height: 72px;
     padding: 4px;
+    /* Transition here handles both mouse-enter and mouse-leave smoothly */
     transition:
         transform 0.3s ease,
-        opacity 0.3s ease;
-}
-
-.logoFooter {
-    width: 32px;
-    height: 32px;
-    padding: 20px;
-    margin: 0 10px; /* Adds horizontal spacing around the footer logo */
-    border-radius: 8px;
+        opacity 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
 .logo:hover {
@@ -73,45 +69,69 @@ img {
 .nav-items > ul {
     display: flex;
     font-size: 20px;
+    margin: 0;
+    padding: 0;
 }
 
 .nav-items > ul > li {
     list-style-type: none;
     padding: 10px;
-    margin: 10px;
+    margin: 0 10px; /* Switched to horizontal margins to ensure flawless scaling */
+    /* Transition placed on base selector so it scales back down smoothly */
+    transition:
+        transform 0.3s ease,
+        color 0.3s ease,
+        font-weight 0.3s ease;
 }
 
+.nav-items > ul > li:hover {
+    color: #ffc800;
+    font-weight: 600;
+    cursor: pointer;
+    transform: scale(
+        1.2
+    ); /* Visual-only zoom that will not push layout elements */
+}
+
+/* ==========================================
+   BODY CONTENT & RESTAURANT CARDS
+   ========================================== */
 .discovery-text {
     font-size: 20px;
     font-weight: 600;
     text-align: left;
-    margin: 20px 0;
-    padding-left: 15px;
+    padding-left: 100px;
+    padding-bottom: 24px;
 }
 
 .restraurant-container {
     display: flex;
     flex-wrap: wrap;
+    padding-left: 100px; /* Aligns with header logo and body content */
+    padding-right: 100px; /* Aligns with header logo and body content */
 }
 
 .restraurant-card {
     background-color: #ffffff;
-    width: 275px;
+    width: 269.474px;
     padding: 8px;
     margin: 10px;
     border-radius: 15px;
+    /* Moved transition here so card glides back down smoothly on hover out */
+    transition:
+        transform 0.3s ease,
+        background-color 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
 .restraurant-card:hover {
     background-color: #dbdbdb;
-    /* Increased alpha opacity from 0.2 to 0.4 and slightly expanded the blur spread */
     box-shadow: 4px 4px 4px rgb(255, 227, 42);
     transform: translateY(-20px);
-    transition: all 0.3s ease;
     cursor: pointer;
 }
 
-/* Image Container wrapper to handle absolute positioning */
+/* Image Containers */
 .image-container {
     position: relative;
     width: 100%;
@@ -125,24 +145,23 @@ img {
     background-color: #ffffff;
 }
 
-/* Shaded overlay container at the bottom of the image for offer text only */
+/* Offer Overlay */
 .image-overlay {
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    padding: 25px 10px 10px 10px; /* Extra top padding for gradient smooth transition */
+    padding: 25px 10px 10px 10px;
     background: linear-gradient(
         to top,
         rgba(0, 0, 0, 0.8) 0%,
-        rgba(0, 0, 0, 0) 100%
+        rgba(0, 0, 0, 0) 100
     );
     box-sizing: border-box;
-    border-bottom-left-radius: 15px; /* Matches image border radius */
+    border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
 }
 
-/* Offer layout inside overlay */
 .offer {
     color: #ffffff;
     font-size: 16px;
@@ -150,26 +169,24 @@ img {
     text-transform: uppercase;
 }
 
-/* Container layout moved back below the image */
+/* Card Details & Ratings */
 .rating-container {
     display: inline-flex;
     align-items: center;
-    gap: 4px; /* Space between star and text */
-    margin: 4px 0; /* Optional: spacing above and below the row */
+    gap: 4px;
+    margin: 4px 0;
     padding: 6px;
 }
 
-/* Star image size and alignment fix */
 .rating-star {
-    width: 18px; /* Matches typical font heights */
+    width: 18px;
     height: 18px;
-    display: block; /* Removes hidden bottom margin of inline images */
+    display: block;
 }
 
-/* Clean dark gray tone for standard background visibility */
 .rating-text {
     font-size: 15px;
-    font-weight: 500px;
+    font-weight: 500; /* Fixed syntax: weight should be a unitless number, not '500px' */
     color: #000000;
 }
 
@@ -179,10 +196,47 @@ img {
     margin-top: 10px;
 }
 
-/* Fixed syntax errors: removed string quotes */
 .rating-delivery {
     display: flex;
     align-items: center;
     gap: 4px;
     margin: 8px 0;
+}
+
+/* ==========================================
+   FOOTER
+   ========================================== */
+.footer {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    justify-content: center;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.logoFooter {
+    width: 32px;
+    height: 32px;
+    padding: 20px;
+    margin: 0 10px;
+    border-radius: 8px;
+}
+
+.filter-btn {
+    background-color: #54a340;
+    color: #ffe734;
+    box-shadow: 0 0 8px #84ff65;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-left: 100px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s ease;
 }
