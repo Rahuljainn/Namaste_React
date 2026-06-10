@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
-import {createBrowserRouter, RouterProvider, Outlet} from 'react-router-dom';
+import {createBrowserRouter, RouterProvider} from 'react-router-dom';
 
 import Header from './components/Header.js';
 import Body from './components/Body.js';
@@ -10,13 +10,11 @@ import Contact from './components/Contact.js';
 import ErrorComponent from './components/Error.js';
 
 const AppLayout = () => {
-    const [searchText, setSearchText] = useState('');
-
     return (
         <div className='app'>
-            <Header searchText={searchText} setSearchText={setSearchText} />
+            <Header />
 
-            <Body searchText={searchText} />
+            <Body />
 
             <Footer />
         </div>
@@ -27,17 +25,17 @@ const appRouter = createBrowserRouter([
     {
         path: '/',
         element: <AppLayout />,
-        errorElement: <ErrorComponent />,
+        // errorElement: <ErrorComponent />,
     },
     {
         path: '/about',
         element: <About />,
-        errorElement: <ErrorComponent />,
+        // errorElement: <ErrorComponent />,
     },
     {
         path: '/contact',
         element: <Contact />,
-        errorElement: <ErrorComponent />,
+        // errorElement: <ErrorComponent />,
     },
 ]);
 

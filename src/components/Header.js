@@ -1,8 +1,7 @@
 import {APPLOGO} from '../utils/constants';
 import {useState} from 'react';
-import Search from './Search.js';
 
-const Header = ({searchText, setSearchText}) => {
+const Header = () => {
     const [isLoggedIn, setIsLoggedIn] = useState('Login');
 
     return (
@@ -13,12 +12,6 @@ const Header = ({searchText, setSearchText}) => {
 
             <div className='nav-items'>
                 <ul>
-                    {
-                        <Search
-                            searchText={searchText}
-                            setSearchText={setSearchText}
-                        />
-                    }
                     <li>Home</li>
                     <li>Offers</li>
                     <li>Help</li>

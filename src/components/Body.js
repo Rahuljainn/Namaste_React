@@ -1,10 +1,12 @@
 import {SWIGGY_API_URL} from '../utils/constants.js';
 import RestaurantCard from './RestaurantCard.js';
 import shimmer from './Shimmer.JS';
+import Search from './Search.js';
 
 import {useState, useEffect} from 'react';
 
-const Body = ({searchText}) => {
+const Body = () => {
+    const [searchText, setSearchText] = useState('');
     const [allFetchedRestaurants, setAllFetchedRestaurants] = useState([]);
 
     const [displayedRestaurants, setDisplayedRestaurants] = useState([]);
@@ -59,6 +61,10 @@ const Body = ({searchText}) => {
         shimmer()
     ) : (
         <div className='body'>
+            <div className='search-container'>
+                <Search searchText={searchText} setSearchText={setSearchText} />
+            </div>
+
             <div className='filter'>
                 <button
                     className='filter-btn'
