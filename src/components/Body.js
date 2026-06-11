@@ -6,6 +6,8 @@ import Search from './Search.js';
 import {useState, useEffect} from 'react';
 
 const Body = () => {
+    // console.log('Body rendered');
+
     const [searchText, setSearchText] = useState('');
     const [allFetchedRestaurants, setAllFetchedRestaurants] = useState([]);
 
@@ -13,8 +15,9 @@ const Body = () => {
 
     const [isTopRatedFilterEnabled, setIsTopRatedFilterEnabled] =
         useState(false);
-
+    console.log('Body rendered', displayedRestaurants.length);
     useEffect(() => {
+        console.log('Fetching restaurants...');
         fetchRestaurantDataFromSwiggy();
     }, []);
 
