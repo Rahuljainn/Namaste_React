@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import {createBrowserRouter, RouterProvider} from 'react-router-dom';
+import {createBrowserRouter, Outlet, RouterProvider} from 'react-router';
 
 import Header from './components/Header.js';
 import Body from './components/Body.js';
@@ -10,11 +10,12 @@ import Contact from './components/Contact.js';
 import ErrorComponent from './components/Error.js';
 
 const AppLayout = () => {
+    console.log('AppLayout rendered');
     return (
         <div className='app'>
             <Header />
 
-            <Body />
+            <Outlet />
 
             <Footer />
         </div>
@@ -25,17 +26,21 @@ const appRouter = createBrowserRouter([
     {
         path: '/',
         element: <AppLayout />,
-        // errorElement: <ErrorComponent />,
-    },
-    {
-        path: '/about',
-        element: <About />,
-        // errorElement: <ErrorComponent />,
-    },
-    {
-        path: '/contact',
-        element: <Contact />,
-        // errorElement: <ErrorComponent />,
+        children: [
+            {
+                path: '/',
+                element: <Body />,
+            },
+            {
+                path: '/about',
+                element: <About />,
+            },
+            {
+                path: '/contact',
+                element: <Contact />,
+            },
+        ],
+        errorElement: <ErrorComponent />,
     },
 ]);
 
