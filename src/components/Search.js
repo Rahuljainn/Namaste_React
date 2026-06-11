@@ -4,7 +4,7 @@ const Search = ({searchText, setSearchText}) => {
     // const [searchInput, setSearchInput] = useState(searchText);
 
     return (
-        <div>
+        <div className='search-container'>
             <input
                 type='text'
                 className='search-input'

@@ -64,9 +64,7 @@ const Body = () => {
         shimmer()
     ) : (
         <div className='body'>
-            <div className='search-container'>
-                <Search searchText={searchText} setSearchText={setSearchText} />
-            </div>
+            <Search searchText={searchText} setSearchText={setSearchText} />
 
             <div className='filter'>
                 <button
