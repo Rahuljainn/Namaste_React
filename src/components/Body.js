@@ -3,8 +3,10 @@ import RestaurantCard from './RestaurantCard.js';
 import shimmer from './Shimmer.JS';
 
 import {useState, useEffect} from 'react';
+import {useOutletContext} from 'react-router';
 
-const Body = ({searchText}) => {
+const Body = () => {
+    const {searchText} = useOutletContext();
     const [allFetchedRestaurants, setAllFetchedRestaurants] = useState([]);
 
     const [displayedRestaurants, setDisplayedRestaurants] = useState([]);

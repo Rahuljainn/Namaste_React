@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import ReactDOM from 'react-dom/client';
-import {createBrowserRouter, RouterProvider, Outlet} from 'react-router-dom';
+import {createBrowserRouter, RouterProvider, Outlet} from 'react-router';
 
 import Header from './components/Header.js';
 import Body from './components/Body.js';
@@ -16,7 +16,7 @@ const AppLayout = () => {
         <div className='app'>
             <Header searchText={searchText} setSearchText={setSearchText} />
 
-            <Body searchText={searchText} />
+            <Outlet context={{searchText, setSearchText}} />
 
             <Footer />
         </div>
@@ -27,16 +27,20 @@ const appRouter = createBrowserRouter([
     {
         path: '/',
         element: <AppLayout />,
-        errorElement: <ErrorComponent />,
-    },
-    {
-        path: '/about',
-        element: <About />,
-        errorElement: <ErrorComponent />,
-    },
-    {
-        path: '/contact',
-        element: <Contact />,
+        children: [
+            {
+                index: true,
+                element: <Body />,
+            },
+            {
+                path: '/about',
+                element: <About />,
+            },
+            {
+                path: '/contact',
+                element: <Contact />,
+            },
+        ],
         errorElement: <ErrorComponent />,
     },
 ]);
