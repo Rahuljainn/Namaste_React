@@ -1,4 +1,4 @@
-const shimmer = () => {
+const Shimmer = () => {
     return (
         <div className='shimmer-wrapper'>
             {Array(14)
@@ -16,4 +16,4 @@ const shimmer = () => {
     );
 };
 
-module.exports = shimmer;
+module.exports = Shimmer;

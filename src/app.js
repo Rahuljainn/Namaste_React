@@ -8,6 +8,7 @@ import Footer from './components/Footer.js';
 import About from './components/About.js';
 import Contact from './components/Contact.js';
 import ErrorComponent from './components/Error.js';
+import RestaurentMenu from './components/RestaurentMenu.js';
 
 const AppLayout = () => {
     console.log('AppLayout rendered');
@@ -38,6 +39,10 @@ const appRouter = createBrowserRouter([
             {
                 path: '/contact',
                 element: <Contact />,
+            },
+            {
+                path: '/restaurents/:resId',
+                element: <RestaurentMenu />,
             },
         ],
         errorElement: <ErrorComponent />,

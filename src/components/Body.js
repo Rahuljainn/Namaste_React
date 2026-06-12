@@ -1,6 +1,6 @@
 import {SWIGGY_API_URL} from '../utils/constants.js';
 import RestaurantCard from './RestaurantCard.js';
-import shimmer from './Shimmer.JS';
+import Shimmer from './Shimmer.js';
 import Search from './Search.js';
 
 import {useState, useEffect} from 'react';
@@ -61,7 +61,7 @@ const Body = () => {
     );
 
     return displayedRestaurants.length === 0 ? (
-        shimmer()
+        <Shimmer />
     ) : (
         <div className='body'>
             <Search searchText={searchText} setSearchText={setSearchText} />

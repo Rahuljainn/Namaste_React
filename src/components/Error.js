@@ -9,7 +9,7 @@ const ErrorComponent = () => {
         <div className='error'>
             <h1>Oops! Something went wrong.</h1>
             <p>Status: {error.status}</p>
-            <p>Message: {error.error.message}</p>
+            <p>Message: {error.message}</p>
             <Link to='/'>Go back to Home</Link>
         </div>
     );
